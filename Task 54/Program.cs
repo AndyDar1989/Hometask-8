@@ -33,23 +33,25 @@ void PrintMatrix(int[,] matrix)
 
 int[,] SortMatrixRow(int[,] matrix)
 {
-    for (int i = 0; i < matrix.GetLength(0); i++)
-    {
-        int max = matrix[i,0];
-        int k =0;
+    int row = matrix.GetLength(0);
+    int col = matrix.GetLength(1);
+    int[,] sortMatrix = new int[row,col];
+    for (int i = 0;i<row;i++)
+    {   
+        for (int k = 0; k<col;k++)
+        {
+        int max = matrix[i,k];
         for (int j = k+1; j < matrix.GetLength(1); j++)
         {
             if (matrix[i, j] > max)
-            {
-            matrix[i,j] = max;    
-            int buff = matrix[i,k];    
-            matrix[i,k] = matrix[i,j];
-            matrix[i,j] = buff;
-            k++;
-            } 
+            {int temp = max;
+            max = matrix[i,j];
+            matrix[i,j] = temp;}
+        }
+        sortMatrix[i,k] = max;
         }
     }
-    return matrix;
+    return sortMatrix;
 }
 
 
