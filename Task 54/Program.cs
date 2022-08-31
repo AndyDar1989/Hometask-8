@@ -31,22 +31,25 @@ void PrintMatrix(int[,] matrix)
     }
 }
 
-void SortMatrixRow(int[,] matrix)
+int[,] SortMatrixRow(int[,] matrix)
 {
-    int max = 0;
-    int k = 0;
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
-        for (int j = k; j < matrix.GetLength(1); j++)
+        int max = matrix[i,0];
+        int k =0;
+        for (int j = k+1; j < matrix.GetLength(1); j++)
         {
             if (matrix[i, j] > max)
             {
-            max = matrix[i,j];
-            }     
+            matrix[i,j] = max;    
+            int buff = matrix[i,k];    
+            matrix[i,k] = matrix[i,j];
+            matrix[i,j] = buff;
+            k++;
+            } 
         }
-        Console.Write($"{max}");
-        k++;
     }
+    return matrix;
 }
 
 
@@ -54,4 +57,5 @@ void SortMatrixRow(int[,] matrix)
 int[,] matr = CreateMatrixRndInt(3, 4, 0, 9);
 PrintMatrix(matr);
 Console.WriteLine();
-SortMatrixRow(matr);
+int[,] newMatr = SortMatrixRow(matr);
+PrintMatrix(newMatr);
