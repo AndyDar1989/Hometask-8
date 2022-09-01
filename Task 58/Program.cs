@@ -58,3 +58,24 @@ Console.WriteLine();
 int[,] resMatr = MultTwoMatrix(matr1,matr2);
 PrintMatrix(resMatr);
 
+/*double Factorial(double n)
+{
+    if(n==1) return 1;
+    else return n = n*Factorial(n-1);
+}
+for (int i = 1; i < 40; i++)
+{
+    Console.WriteLine($"{i} {Factorial(i)}");
+}*/
+
+
+double Fibonacci (int n)
+{
+    if(n==1 || n==2) return 1;
+    else return Fibonacci(n-1)+Fibonacci(n-2);
+}
+for (int i = 1; i < 40; i++)
+{
+    Console.WriteLine($" {i} {Fibonacci(i)}");
+}
+
