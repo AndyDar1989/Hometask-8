@@ -5,66 +5,39 @@
 11 16 15 06
 10 09 08 07*/
 
-/*void PrintImage(int[,] image)
-{
-for (int i = 0; i < image.GetLength(0); i++)
-{
-    for (int j = 0; j < image.GetLength(1); j++)
-    {
-        if (image[i, j] == 0) Console.Write(" ");
-        else Console.Write("+");
-    }
-    Console.WriteLine();
-}
-}*/
 
 void FillMatrix(int row, int col)
 {
     int[,] matrix = new int[row, col];
-    int i = 0;
+
+    for (int k = 0; k <= matrix.Length; k++)
+    {int i =0;
     int j = 0;
-    int size = row*col;
-    for (int n = 0;; n++)
+    for ( ;i < row; i++)
     {
-        while(j<col)
-           {matrix[i, j] = n;
-           j++;}
-        while(i+1<row)
-           {
-            matrix[i, j] = n;
-            i++;}
-        while(j-1>=0)
-           {matrix[i, j] = n;
-           j--;}
-        while(i-1>0)
-           {
-            matrix[i, j] = n;
-            i--;}
-        while(j<col-1)
-           {matrix[i, j] = n;
-           j++;}
-        while(i<row-1)
-           {
-            matrix[i, j] = n;
-            i++;}
-        while(j>0)
-           {matrix[i, j] = n;
-           j--;}
+            for (; j < col; j++)
+            {
+                matrix[i, j] = k;
+                Console.Write(matrix[i, j]);
+            }
+            i++;
+            matrix[i, j] = k;
+            Console.Write(matrix[i, j]);
+            j--;
+            for (; j >= 0; j--)
+            {
+                matrix[i, j] = k;
+                Console.Write(matrix[i, j]);
+            }
+            i++;
 
-      }  }
-   
-FillMatrix(4,4);
-           
-           
-   
+        }
+    }}
+
+        FillMatrix(4, 4);
 
 
-    /*if (pic[row, col]==0)
-    {
-        pic[row, col]=1;
-        FillImage(row-1, col);
-        FillImage(row, col-1);
-        FillImage(row+1, col);
-        FillImage(row, col+1);
-    }
-}*/
+
+
+
+

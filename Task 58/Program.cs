@@ -28,54 +28,46 @@ void PrintMatrix(int[,] matrix)
     }
 }
 
-int[,] MultTwoMatrix(int[,] matrix1,int[,] matrix2)
+int[,] MultTwoMatrix(int[,] matrix1, int[,] matrix2)
 {
-int sizeR = 0;
-int sizeC = 0;
-if (matrix1.GetLength(0)>matrix2.GetLength(0))
-sizeR =  matrix2.GetLength(0);
-else sizeR =  matrix1.GetLength(0);
-if(matrix1.GetLength(1)>matrix2.GetLength(1))
-sizeC =  matrix2.GetLength(1);
-else sizeC =  matrix1.GetLength(1);
-int[,] multMatrix = new int[sizeR,sizeC];
-int i = 0;
-int j = 0;
-        multMatrix[i,j] = matrix1[i,j]*matrix2[i,j]+matrix1[i,j+1]*matrix2[i+1,j];
-        multMatrix[i,j+1] = matrix1[i,j]*matrix2[i,j+1]+matrix1[i,j+1]*matrix2[i+1,j+1];
-        multMatrix[i+1,j] = matrix1[i+1,j]*matrix2[i,j]+matrix1[i+1,j+1]*matrix2[i+1,j];
-        multMatrix[i+1,j+1] = matrix1[i+1,j]*matrix2[i,j+1]+matrix1[i+1,j+1]*matrix2[i+1,j+1];
-
-return multMatrix;
+    int sizeR = 0;
+    int sizeC = 0;
+    if (matrix1.GetLength(0) > matrix2.GetLength(0))
+        sizeR = matrix2.GetLength(0);
+    else sizeR = matrix1.GetLength(0);
+    if (matrix1.GetLength(1) > matrix2.GetLength(1))
+        sizeC = matrix2.GetLength(1);
+    else sizeC = matrix1.GetLength(1);
+    int[,] multMatrix = new int[sizeR, sizeC];
+    
+   
+        for (int i = 0; i < sizeR; i++)
+        {
+            for (int k = 0; k < sizeC; k++)
+            {   int sum = 0;
+                for (int j = 0; j < sizeC; j++)
+                {
+                   int a= matrix1[i, j] * matrix2[j, k];
+                   sum = sum+a;
+                }
+                multMatrix[i,k] = sum;
+        }
+        
+        }
+    return multMatrix;
 }
 
-int[,] matr1 = CreateMatrixRndInt(2, 2, 1, 9);
+
+
+int[,] matr1 =CreateMatrixRndInt(2, 2, 1, 9);
 PrintMatrix(matr1);
 Console.WriteLine();
 int[,] matr2 = CreateMatrixRndInt(2, 2, 1, 9);
 PrintMatrix(matr2);
 Console.WriteLine();
-int[,] resMatr = MultTwoMatrix(matr1,matr2);
+int[,] resMatr = MultTwoMatrix(matr1, matr2);
 PrintMatrix(resMatr);
 
-/*double Factorial(double n)
-{
-    if(n==1) return 1;
-    else return n = n*Factorial(n-1);
-}
-for (int i = 1; i < 40; i++)
-{
-    Console.WriteLine($"{i} {Factorial(i)}");
-}*/
 
 
-double Fibonacci (int n)
-{
-    if(n==1 || n==2) return 1;
-    else return Fibonacci(n-1)+Fibonacci(n-2);
-}
-for (int i = 1; i < 40; i++)
-{
-    Console.WriteLine($" {i} {Fibonacci(i)}");
-}
 
