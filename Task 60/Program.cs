@@ -49,8 +49,6 @@ int[,,] Create3DArrayRndInt(int str, int col, int depth)
     return array3D;
 }
 
-
-
 void Print3DArray(int[,,] array3D)
 {
     for (int i = 0; i < array3D.GetLength(0); i++)

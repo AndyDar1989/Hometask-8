@@ -5,36 +5,42 @@
 11 16 15 06
 10 09 08 07*/
 
-
-void FillMatrix(int row, int col)
+int[,] FillMatrix(int row, int col)
 {
     int[,] matrix = new int[row, col];
-
-    for (int k = 0; k <= matrix.Length; k++)
-    {int i =0;
+    int k = 1;
+    int i = 0;
     int j = 0;
-    for ( ;i < row; i++)
+    while (k <= matrix.Length)
     {
-            for (; j < col; j++)
-            {
-                matrix[i, j] = k;
-                Console.Write(matrix[i, j]);
-            }
+        matrix[i, j] = k;
+        if (i <= j + 1 && i + j < col - 1)
+            j++;
+        else if (i < j && i + j >= row - 1)
             i++;
-            matrix[i, j] = k;
-            Console.Write(matrix[i, j]);
+        else if (i >= j && i + j > col - 1)
             j--;
-            for (; j >= 0; j--)
-            {
-                matrix[i, j] = k;
-                Console.Write(matrix[i, j]);
-            }
-            i++;
+        else
+            i--;
+        k++;
+    }
+    return matrix;
+}
 
-        }
-    }}
 
-        FillMatrix(4, 4);
+void PrintMatrix(int[,] matrix)
+{
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+            Console.Write($"{matrix[i, j],4}");// 4- задает длинну под вывод 
+        Console.WriteLine();
+    }
+}
+
+int[,] matr = FillMatrix(5, 5);
+PrintMatrix(matr);
+
 
 
 
