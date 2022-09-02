@@ -38,38 +38,39 @@ void PrintMatrix(int[,] matrix)
 int[] FindMinElement(int[,] matrix)
 {
     int min = matrix[0, 0];
-    int[] array= new int[2];
+    int[] array = new int[2];
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
             if (matrix[i, j] < min)
             {
-            min = matrix[i, j];
-            array[0]=i;
-            array[1]=j;
-           }}
+                min = matrix[i, j];
+                array[0] = i;
+                array[1] = j;
+            }
+        }
     }
-   return array; 
+    return array;
 }
 
 void DelRowCol(int[,] matrix, int k, int l)
 {
-  for (int i = 0; i < matrix.GetLength(0); i++)
-    {if (i!=k){
-        for (int j = 0; j < matrix.GetLength(1); j++)
-        {if (j!=l){
-             Console.Write($"{matrix[i, j],4}");// 4- задает длинну под вывод 
-        Console.Write("");}
-        /*else {j++;Console.WriteLine($"{matrix[i, j],4}");}}}*/
-    }}}
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        if (i != k)
+            for (int j = 0; j < matrix.GetLength(1); j++)
+                if (j != l)
+                    Console.Write($"{matrix[i, j],3}");
+        Console.WriteLine();
+    }
 }
 
 int[,] matr = CreateMatrixRndInt(3, 4, 0, 9);
 PrintMatrix(matr);
-int[] position  = FindMinElement(matr);
+int[] position = FindMinElement(matr);
 Console.WriteLine();
-DelRowCol(matr, position[0],position[1]);
+DelRowCol(matr, position[0], position[1]);
 
 
 
