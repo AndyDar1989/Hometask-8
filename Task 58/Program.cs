@@ -39,30 +39,28 @@ int[,] MultTwoMatrix(int[,] matrix1, int[,] matrix2)
         sizeC = matrix2.GetLength(1);
     else sizeC = matrix1.GetLength(1);
     int[,] multMatrix = new int[sizeR, sizeC];
-    
-   
-        for (int i = 0; i < sizeR; i++)
+    for (int i = 0; i < sizeR; i++)
+    {
+        for (int k = 0; k < sizeC; k++)
         {
-            for (int k = 0; k < sizeC; k++)
-            {   int sum = 0;
-                for (int j = 0; j < sizeC; j++)
-                {
-                   int a= matrix1[i, j] * matrix2[j, k];
-                   sum = sum+a;
-                }
-                multMatrix[i,k] = sum;
+            int sum = 0;
+            for (int j = 0; j < sizeC; j++)
+            {
+                int a = matrix1[i, j] * matrix2[j, k];
+                sum = sum + a;
+            }
+            multMatrix[i, k] = sum;
         }
-        
-        }
+    }
     return multMatrix;
 }
 
 
 
-int[,] matr1 =CreateMatrixRndInt(2, 2, 1, 9);
+int[,] matr1 = CreateMatrixRndInt(3, 3, 1, 9);
 PrintMatrix(matr1);
 Console.WriteLine();
-int[,] matr2 = CreateMatrixRndInt(2, 2, 1, 9);
+int[,] matr2 = CreateMatrixRndInt(3, 3, 1, 9);
 PrintMatrix(matr2);
 Console.WriteLine();
 int[,] resMatr = MultTwoMatrix(matr1, matr2);
