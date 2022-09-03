@@ -35,10 +35,23 @@ void PrintMatrix(int[,] matrix)
     }
 }
 
-int[] FindMinElement(int[,] matrix)
+void PrintMatrixWithout(int[,] matrix, int delRow, int delCol)
+{
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        if (i != delRow)
+            for (int j = 0; j < matrix.GetLength(1); j++)
+                if (j != delCol)
+                    Console.Write($"{matrix[i, j],3}");
+        Console.WriteLine();
+    }
+}
+
+void DelRowColMinElem(int[,] matrix)
 {
     int min = matrix[0, 0];
-    int[] array = new int[2];
+    int delRow = 0;
+    int delCol = 0;
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
@@ -46,31 +59,20 @@ int[] FindMinElement(int[,] matrix)
             if (matrix[i, j] < min)
             {
                 min = matrix[i, j];
-                array[0] = i;
-                array[1] = j;
+                delRow = i;
+                delCol = j;
             }
         }
     }
-    return array;
+    PrintMatrixWithout(matrix, delRow, delCol);
 }
 
-void DelRowCol(int[,] matrix, int k, int l)
-{
-    for (int i = 0; i < matrix.GetLength(0); i++)
-    {
-        if (i != k)
-            for (int j = 0; j < matrix.GetLength(1); j++)
-                if (j != l)
-                    Console.Write($"{matrix[i, j],3}");
-        Console.WriteLine();
-    }
-}
 
 int[,] matr = CreateMatrixRndInt(3, 4, 0, 9);
 PrintMatrix(matr);
-int[] position = FindMinElement(matr);
 Console.WriteLine();
-DelRowCol(matr, position[0], position[1]);
+DelRowColMinElem(matr);
+
 
 
 

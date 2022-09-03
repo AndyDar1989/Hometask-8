@@ -42,7 +42,6 @@ void MinSumOfElem(int[,] matrix)
             sum += matrix[i, j];
         }
         array[k] = sum;
-        Console.Write(array[k] + " ");
         k++;
     }
     int min = array[0];
@@ -57,9 +56,8 @@ void MinSumOfElem(int[,] matrix)
         }
         l++;
     }
-    Console.WriteLine($"row with mimimal summ ({min}) is {m+1}");
+    Console.WriteLine($"row with minimal summ ({min}) is {m + 1}");
 }
-
 
 int[,] matr = CreateMatrixRndInt(4, 4, 0, 9);
 PrintMatrix(matr);
